@@ -2,6 +2,7 @@ import os
 from datetime import datetime as dt
 import random
 import json
+import socket
 from bottle import route, run, static_file, view
 
 @route("/")
@@ -34,7 +35,12 @@ def send_css(filename):
 def send_js(filename):
     return static_file(filename, root='static/js')
 
+host_name = socket.gethostname() 
+host_ip = socket.gethostbyname(host_name) 
+print("Hostname :  ",host_name) 
+print("IP : ",host_ip) 
+
 if os.environ.get('APP_LOCATION') == 'heroku':
-    run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+    run(host=host_name, port=int(os.environ.get("PORT", 5000)))
 else:
-    run(host='localhost', port=8080, debug=True)
+    run(host=host_name, port=8080, debug=True)
