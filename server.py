@@ -41,6 +41,6 @@ print("Hostname :  ",host_name)
 print("IP : ",host_ip) 
 
 if os.environ.get('APP_LOCATION') == 'heroku':
-    run(host=host_name, port=int(os.environ.get("PORT", 5000)))
+    run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
 else:
     run(host=host_name, port=8080, debug=True)
