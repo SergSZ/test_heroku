@@ -1,6 +1,6 @@
 advice_url = "https://api.adviceslip.com/advice"
 // perduction_url = "http://sf-pyw.mosyag.in/m04/api/forecasts"
-perduction_url = "http://localhost:8080/api/forecasts"
+perduction_url = "https://nameless-castle-90009.herokuapp.com:5000/api/forecasts"
 
 $("#ma_head").click(function() {
     $.getJSON(advice_url, function(data){
