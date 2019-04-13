@@ -4,10 +4,10 @@ import random
 import json
 from bottle import route, run, static_file, view
 
-
-# @route("/")
-# def index():
-#     return "<h1>Success!</h1>"
+@route("/")
+@view("home")
+def example_template_render():
+    return {"now": dt.now().isoformat()}
 
 @route("/api/forecasts")
 def api_forecasts():
@@ -25,21 +25,6 @@ def api_forecasts():
     prophecies_list["prophecies"] = generated_prophecies
     prophecies = json.dumps(prophecies_list, sort_keys=False, indent=3)
     return prophecies
-
-
-@route("/api/roll/<some_id:int>")
-def example_api_response(some_id):
-    return {
-        "requested_id": some_id,
-        "random_number": randrange(some_id)
-    }
-
-
-@route("/")
-@view("home")
-def example_template_render():
-    return {"now": dt.now().isoformat()}
-
 
 @route('/css/<filename>')
 def send_css(filename):
