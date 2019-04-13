@@ -1,1 +1,2 @@
-# test_heroku
+# pyweb-bottle-heroku
+simple bottle heroku app
